@@ -1,98 +1,116 @@
 <html>
+
 <head>
-    <title>Miro Widget Counter</title>
+    <title>Miro Code Editor</title>
     <script src="https://miro.com/app/static/sdk.1.1.js"></script>
     <style type="text/css">
-    @font-face{
-        font-family: "Formular";
-        src: url("https://miro.com/app/static/static/fonts/general/FormularRegular/formular-regular.4b9930.woff2");
-    }
-    body, button, input, textarea, select {
-        font: 14px OpenSans, Arial, Helvetica, sans-serif;
-        font-style: normal;
-        font-variant-ligatures: normal;
-        font-variant-caps: normal;
-        font-variant-numeric: normal;
-        font-variant-east-asian: normal;
-        font-weight: normal;
-        font-stretch: normal;
-        font-size: 14px;
-        line-height: normal;
-        font-family: OpenSans, Arial, Helvetica, sans-serif;
-    }
-    .sidebar__content {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-      position: relative;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-      min-width: 0;
-      min-height: 0;
-      height: 100%;
-    }
-    .stat-list {
-      width: 340px;
-    }
-    .stat-list .stat-list__header {
-      font-size: 14px;
-      font-weight: bold;
-      height: 44px;
-      padding: 8px 0 0 12px;
-      margin-bottom: 20px;
-      font-family: Formular, sans-serif;
-      font-size: 24px;
-      font-weight: 500;
-    }
-    .stat-list .stat-list__empty {
-      color: #050038;
-      font-size: 12px;
-      margin: 20px 0 20px 0;
-      padding: 0 24px 0 24px;
-      text-align: center;
-    }
-    .stat-list .stat-list__table {
-        margin-bottom: 40px;
-    }
-    .stat-list .stat-list__title {
-      display: -ms-flexbox;
-      display: flex;
-      padding: 0 20px 0 24px;
-    }
-    .stat-list .stat-list__title span {
-      color: #050038;
-      font-weight: bold;
-      padding: 0 4px;
-      font-size: 14px;
-    }
-    .stat-list .stat-list__title::after,
-    .stat-list .stat-list__title::before {
-      content: '';
-      display: block;
-      background-color: #e1e0e7;
-      height: 1px;
-      -ms-flex-positive: 1;
-      flex-grow: 1;
-      margin-top: 9px;
-    }
-    .stat-list .stat-list__item {
-      font-family: Formular, sans-serif;
-      font-size: 18px;
-      line-height: 20px;
-      margin: 10px 0 10px 0;
-      font-weight: normal;
-      padding: 0 24px 0 24px;
-    }
-    .stat-list .stat-list__item .stat-list__item-name {
-      text-transform: capitalize;
-      margin-left: 4px;
-    }
-    .stat-list .stat-list__item .stat-list__item-value {
-      float: right;
-    }
+        @font-face {
+            font-family: "Formular";
+            src: url("https://miro.com/app/static/static/fonts/general/FormularRegular/formular-regular.4b9930.woff2");
+        }
+
+        body,
+        button,
+        input,
+        textarea,
+        select {
+            font: 14px OpenSans, Arial, Helvetica, sans-serif;
+            font-style: normal;
+            font-variant-ligatures: normal;
+            font-variant-caps: normal;
+            font-variant-numeric: normal;
+            font-variant-east-asian: normal;
+            font-weight: normal;
+            font-stretch: normal;
+            font-size: 14px;
+            line-height: normal;
+            font-family: OpenSans, Arial, Helvetica, sans-serif;
+        }
+
+        .sidebar__content {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            position: relative;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            min-width: 0;
+            min-height: 0;
+            height: 100%;
+        }
+
+        .stat-list {
+            width: 340px;
+        }
+
+        .stat-list .stat-list__header {
+            font-size: 14px;
+            font-weight: bold;
+            height: 44px;
+            padding: 8px 0 0 12px;
+            margin-bottom: 20px;
+            font-family: Formular, sans-serif;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .stat-list .stat-list__empty {
+            color: #050038;
+            font-size: 12px;
+            margin: 20px 0 20px 0;
+            padding: 0 24px 0 24px;
+            text-align: center;
+        }
+
+        .stat-list .stat-list__table {
+            margin-bottom: 40px;
+        }
+
+        .stat-list .stat-list__title {
+            display: -ms-flexbox;
+            display: flex;
+            padding: 0 20px 0 24px;
+        }
+
+        .stat-list .stat-list__title span {
+            color: #050038;
+            font-weight: bold;
+            padding: 0 4px;
+            font-size: 14px;
+        }
+
+        .stat-list .stat-list__title::after,
+        .stat-list .stat-list__title::before {
+            content: '';
+            display: block;
+            background-color: #e1e0e7;
+            height: 1px;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            margin-top: 9px;
+        }
+
+        .stat-list .stat-list__item {
+            font-family: Formular, sans-serif;
+            font-size: 18px;
+            line-height: 20px;
+            margin: 10px 0 10px 0;
+            font-weight: normal;
+            padding: 0 24px 0 24px;
+        }
+
+        .stat-list .stat-list__item .stat-list__item-name {
+            text-transform: capitalize;
+            margin-left: 4px;
+        }
+
+        .stat-list .stat-list__item .stat-list__item-value {
+            float: right;
+        }
     </style>
 </head>
+
 <body>
     <div class="sidebar__content">
         <div id="stat-container" class="stat-list">
@@ -110,10 +128,28 @@
                 </div>
             </div> -->
         </div>
-        <div>Editor</div>
+        <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
     </div>
 </body>
+
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js"></script>
+<script>
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs' } });
+
+    require(['vs/editor/editor.main'], function () {
+        var editor = monaco.editor.create(document.getElementById('container'), {
+            value: [
+                'function x() {',
+                '\tconsole.log("Hello world!");',
+                '}'
+            ].join('\n'),
+            language: 'javascript'
+        });
+    });
+</script>
 
 <script type="text/javascript">
     miro.onReady(() => {
@@ -127,8 +163,8 @@
         clear();
         const statByType = calcByType(selection)
         getContainer().appendChild(createStatTable(
-            "by Type", 
-            "Looks like the selection is empty.", 
+            "by Type",
+            "Looks like the selection is empty.",
             statByType
         ))
     }
@@ -149,11 +185,11 @@
         statView.className = "stat-list__table"
 
         const titleView = document.createElement("div");
-        titleView.className = "stat-list__title"; 
+        titleView.className = "stat-list__title";
         titleView.innerHTML = `<span>${title}</span>`;
         statView.appendChild(titleView);
 
-        if (data.size === 0){
+        if (data.size === 0) {
             const emptyView = document.createElement('div')
             emptyView.className = "stat-list__empty"
             emptyView.innerText = emptyText
@@ -177,10 +213,10 @@
     function countBy(list, keyGetter) {
         const map = new Map()
         list.forEach((item) => {
-             const key = keyGetter(item)
-             const count = map.get(key)
-             map.set(key, !count ? 1 : count + 1)
+            const key = keyGetter(item)
+            const count = map.get(key)
+            map.set(key, !count ? 1 : count + 1)
         });
-        return new Map([...map.entries()].sort((a,b) => b[1] - a[1]))
+        return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
     }
 </script>
