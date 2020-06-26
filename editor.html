@@ -127,7 +127,7 @@
                     <span class="stat-list__item-value">10</span>
                 </div>
             </div> -->
-            <div id="container" style="height:480px;border:1px solid grey"></div>
+            <div id="code-container" style="height:480px;border:1px solid grey"></div>
         </div>
     </div>
 </body>
@@ -139,13 +139,15 @@
 <script>
     require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs' } });
 
+    var codeValue = [
+        'function x() {',
+        '\tconsole.log("Hello world!");',
+        '}'
+    ].join('\n');
+    
     require(['vs/editor/editor.main'], function () {
-        var editor = monaco.editor.create(document.getElementById('container'), {
-            value: [
-                'function x() {',
-                '\tconsole.log("Hello world!");',
-                '}'
-            ].join('\n'),
+        window.editor = monaco.editor.create(document.getElementById('code-container'), {
+            value: codeValue,
             language: 'javascript'
         });
     });
@@ -154,10 +156,17 @@
 <script type="text/javascript">
     miro.onReady(() => {
         miro.addListener('SELECTION_UPDATED', (e) => {
-            showStatistics(e.data)
-        })
-        miro.board.selection.get().then(showStatistics)
+            showStatistics(e.data);
+            updateEditor(e.data);
+        });
+        miro.board.selection.get().then(showStatistics).then(updateEditor);
     })
+
+    function updateEditor(selection){
+        let firstSelected= selection.filter(widget => widget.type === 'shape')[0];
+
+        window.editor.setValue(firstSelected.text);
+    }
 
     function showStatistics(selection) {
         clear();
