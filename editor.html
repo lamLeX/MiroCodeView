@@ -144,7 +144,7 @@
         '\tconsole.log("Hello world!");',
         '}'
     ].join('\n');
-    
+
     require(['vs/editor/editor.main'], function () {
         window.editor = monaco.editor.create(document.getElementById('code-container'), {
             value: codeValue,
@@ -162,10 +162,18 @@
         miro.board.selection.get().then(showStatistics).then(updateEditor);
     })
 
-    function updateEditor(selection){
-        let firstSelected= selection.filter(widget => widget.type === 'shape')[0];
+    function updateEditor(selection) {
+        if (selection) {
+            let firstSelected = selection.filter(widget => widget.type === 'SHAPE')[0];
 
-        window.editor.setValue(firstSelected.text);
+            if (window.selectedWidget !== firstSelected) {
+                if (window.selectedWidget) {
+                    window.selectedWidget.text = window.editor.getValue();
+                }
+                window.editor.setValue(firstSelected.text);
+                window.selectedWidget = firstSelected;
+            }
+        }
     }
 
     function showStatistics(selection) {
