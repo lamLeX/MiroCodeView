@@ -163,14 +163,14 @@
     })
 
     function updateEditor(selection) {
-        if (selection) {
+        if (selection != null) {
             let firstSelected = selection.filter(widget => widget.type === 'SHAPE')[0];
 
             if (window.selectedWidget !== firstSelected) {
                 if (window.selectedWidget) {
                     window.selectedWidget.text = window.editor.getValue();
                 }
-                window.editor.setValue(firstSelected.text);
+                window.editor.setValue(firstSelected.text??"");
                 window.selectedWidget = firstSelected;
             }
         }
